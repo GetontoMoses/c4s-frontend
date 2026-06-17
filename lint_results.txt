@@ -1,0 +1,48 @@
+
+> shepherdcare2@0.1.0 lint
+> eslint
+
+
+/home/mojos/Downloads/shepherdcare-system/shepherdcare2/app/auth/login/page.tsx
+  20:22  warning  'ROLE_LABELS' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/mojos/Downloads/shepherdcare-system/shepherdcare2/app/components/TestimonialCard.tsx
+  58:21  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  58:29  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/home/mojos/Downloads/shepherdcare-system/shepherdcare2/app/finance-officer/dashboard/page.tsx
+  24:8  warning  'ReceiptIcon' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/mojos/Downloads/shepherdcare-system/shepherdcare2/app/member/dashboard/page.tsx
+  10:8  warning  'Avatar' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/mojos/Downloads/shepherdcare-system/shepherdcare2/app/ministry-leader/dashboard/page.tsx
+  8:8  warning  'Button' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/mojos/Downloads/shepherdcare-system/shepherdcare2/app/page.tsx
+  7:5  warning  'LinearProgress' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/mojos/Downloads/shepherdcare-system/shepherdcare2/app/pastor/community/page.tsx
+  5:8  warning  'Grid' is defined but never used    @typescript-eslint/no-unused-vars
+  8:8  warning  'Button' is defined but never used  @typescript-eslint/no-unused-vars
+  9:8  warning  'Chip' is defined but never used    @typescript-eslint/no-unused-vars
+
+/home/mojos/Downloads/shepherdcare-system/shepherdcare2/app/pastor/dashboard/page.tsx
+  15:8  warning  'Avatar' is defined but never used    @typescript-eslint/no-unused-vars
+  17:8  warning  'StatCard' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/mojos/Downloads/shepherdcare-system/shepherdcare2/app/pastor/retreats/page.tsx
+  5:8  warning  'Grid' is defined but never used    @typescript-eslint/no-unused-vars
+  8:8  warning  'Button' is defined but never used  @typescript-eslint/no-unused-vars
+  9:8  warning  'Chip' is defined but never used    @typescript-eslint/no-unused-vars
+
+/home/mojos/Downloads/shepherdcare-system/shepherdcare2/app/pastor/tasks/page.tsx
+  5:8  warning  'Grid' is defined but never used    @typescript-eslint/no-unused-vars
+  8:8  warning  'Button' is defined but never used  @typescript-eslint/no-unused-vars
+  9:8  warning  'Chip' is defined but never used    @typescript-eslint/no-unused-vars
+
+/home/mojos/Downloads/shepherdcare-system/shepherdcare2/app/pastor/wellness/page.tsx
+  16:8  warning  'Divider' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 19 problems (2 errors, 17 warnings)
+
