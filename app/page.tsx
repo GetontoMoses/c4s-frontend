@@ -22,7 +22,6 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CheckIcon from '@mui/icons-material/Check';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Link from 'next/link';
 
 // ── Animated counter hook ─────────────────────────────────────────────────────
@@ -192,7 +191,6 @@ const testimonials = [
 
 // ── Main page ─────────────────────────────────────────────────────────────────
 export default function HomePage() {
-  const [videoOpen, setVideoOpen] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
   const [statsInView, setStatsInView] = useState(false);
 
@@ -244,16 +242,10 @@ export default function HomePage() {
                 ShepherdCare gives African churches a structured, transparent way to fundraise for their pastor&apos;s wellbeing — sabbaticals, counseling, retreats, and rest — powered by M-Pesa and built on accountability.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 4 }}>
-                <Button variant="contained" color="primary" size="large" component={Link} href="/auth/login"
+                <Button variant="contained" color="primary" size="large" component={Link} href="/auth/register"
                   endIcon={<ArrowForwardIcon />}
                   sx={{ px: 3.5, py: 1.5, fontSize: '0.95rem', boxShadow: '0 4px 20px rgba(194,98,42,0.35)' }}>
                   Register Your Church
-                </Button>
-                <Button variant="outlined"
-                  startIcon={<PlayArrowIcon />}
-                  onClick={() => setVideoOpen(true)}
-                  sx={{ px: 3, py: 1.5, fontSize: '0.95rem', color: 'rgba(253,246,238,0.85)', borderColor: 'rgba(253,246,238,0.3)', '&:hover': { borderColor: 'rgba(253,246,238,0.7)', background: 'rgba(253,246,238,0.05)' } }}>
-                  Watch 2-min demo
                 </Button>
               </Box>
               <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap' }}>
@@ -357,7 +349,7 @@ export default function HomePage() {
               <Typography sx={{ color: '#6B4C35', fontFamily: '"Lora",serif', fontSize: '1rem', lineHeight: 1.9, mb: 4 }}>
                 ShepherdCare gives congregations the tools to actively, structurally, and transparently care for the people who care for them — not just on Appreciation Sunday, but every single month.
               </Typography>
-              <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} component={Link} href="/auth/login" sx={{ px: 3 }}>
+              <Button variant="contained" color="primary" endIcon={<ArrowForwardIcon />} component={Link} href="/auth/register" sx={{ px: 3 }}>
                 Start caring for your pastor
               </Button>
             </Grid>
@@ -401,9 +393,8 @@ export default function HomePage() {
             ].map((s, i) => (
               <Grid size={{ xs: 12, md: 4 }} key={i}>
                 <Box sx={{ position: 'relative', height: '100%' }}>
-                  {i < 2 && <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', top: 28, right: -32, width: 64, height: 1, background: 'rgba(194,98,42,0.3)', zIndex: 1 }} />}
                   <Box sx={{ p: 3.5, background: 'rgba(255,248,242,0.04)', border: '1px solid rgba(255,248,242,0.08)', borderRadius: 3, height: '100%', transition: 'background 0.2s, border-color 0.2s', '&:hover': { background: 'rgba(194,98,42,0.08)', borderColor: 'rgba(194,98,42,0.2)' } }}>
-                    <Typography sx={{ color: '#C2622A', fontFamily: '"Playfair Display",serif', fontWeight: 700, fontSize: '3rem', lineHeight: 1, mb: 2, opacity: 0.7 }}>{s.n}</Typography>
+                    <Typography sx={{ color: '#C2622A', fontFamily: '"Playfair Display",serif', fontWeight: 700, fontSize: '3rem', lineHeight: 1, mb: 2, opacity: 1 }}>{s.n}</Typography>
                     <Typography sx={{ color: '#FDF6EE', fontFamily: '"Playfair Display",serif', fontWeight: 600, fontSize: '1.1rem', mb: 1.5, lineHeight: 1.3 }}>{s.title}</Typography>
                     <Typography sx={{ color: 'rgba(253,246,238,0.6)', fontFamily: '"Lora",serif', fontSize: '0.87rem', lineHeight: 1.8, mb: 2 }}>{s.desc}</Typography>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.8 }}>
@@ -470,7 +461,7 @@ export default function HomePage() {
             <Typography sx={{ color: '#6B4C35', fontFamily: '"Lora",serif', fontSize: '0.92rem', mb: 2 }}>
               Your church isn&apos;t listed yet?
             </Typography>
-            <Button variant="contained" color="primary" component={Link} href="/auth/login" endIcon={<ArrowForwardIcon />} sx={{ px: 3.5 }}>
+            <Button variant="contained" color="primary" component={Link} href="/auth/register" endIcon={<ArrowForwardIcon />} sx={{ px: 3.5 }}>
               Register your church — it&apos;s free
             </Button>
           </Box>
@@ -541,7 +532,7 @@ export default function HomePage() {
                       </Box>
                     ))}
                   </Box>
-                  <Button variant={p.featured ? 'outlined' : 'contained'} color="primary" fullWidth component={Link} href="/auth/login"
+                  <Button variant={p.featured ? 'outlined' : 'contained'} color="primary" fullWidth component={Link} href="/auth/register"
                     sx={{ py: 1.3, fontSize: '0.9rem', background: p.featured ? 'transparent' : '#C2622A', borderColor: p.featured ? 'rgba(253,246,238,0.5)' : '#C2622A', color: p.featured ? '#FDF6EE' : '#FDF6EE', '&:hover': { background: p.featured ? 'rgba(253,246,238,0.1)' : '#8B3E14', borderColor: p.featured ? '#FDF6EE' : '#8B3E14' } }}>
                     {p.cta}
                   </Button>
@@ -594,7 +585,7 @@ export default function HomePage() {
             Launch a dedicated wellness fund for your church in under 10 minutes. Start free. No credit card required.
           </Typography>
           <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap', mb: 4 }}>
-            <Button variant="contained" color="primary" size="large" component={Link} href="/auth/login" endIcon={<ArrowForwardIcon />} sx={{ px: 4, py: 1.6, fontSize: '1rem', boxShadow: '0 4px 24px rgba(194,98,42,0.4)' }}>
+            <Button variant="contained" color="primary" size="large" component={Link} href="/auth/register" endIcon={<ArrowForwardIcon />} sx={{ px: 4, py: 1.6, fontSize: '1rem', boxShadow: '0 4px 24px rgba(194,98,42,0.4)' }}>
               Register Your Church
             </Button>
             <Button variant="outlined" size="large" sx={{ px: 4, py: 1.6, fontSize: '1rem', color: 'rgba(253,246,238,0.8)', borderColor: 'rgba(253,246,238,0.3)', '&:hover': { borderColor: 'rgba(253,246,238,0.7)', background: 'rgba(253,246,238,0.05)' } }}>

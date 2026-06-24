@@ -88,7 +88,7 @@ export default function HomeNavigation() {
                 sx={{ color: scrolled ? '#2C1A0E' : 'rgba(253,246,238,0.8)', fontFamily: '"Lora",serif', fontSize: '0.88rem', fontWeight: 600, px: 2, '&:hover': { color: '#C2622A', background: 'transparent' } }}>
                 Login
               </Button>
-              <Button component={Link} href="/auth/login" variant="contained" color="primary" endIcon={<ArrowForwardIcon sx={{ fontSize: 15 }} />}
+              <Button component={Link} href="/auth/register" variant="contained" color="primary" endIcon={<ArrowForwardIcon sx={{ fontSize: 15 }} />}
                 sx={{ fontFamily: '"Lora",serif', fontSize: '0.85rem', fontWeight: 600, px: 2.5, py: 0.9, boxShadow: '0 2px 12px rgba(194,98,42,0.3)' }}>
                 Register Church
               </Button>
@@ -102,8 +102,6 @@ export default function HomeNavigation() {
         </Container>
       </AppBar>
 
-      {/* Spacer for fixed nav */}
-      <Box sx={{ height: 72 }} />
 
       {/* Mobile drawer */}
       <Drawer anchor="right" open={mobileOpen} onClose={() => setMobileOpen(false)}
@@ -133,7 +131,7 @@ export default function HomeNavigation() {
             sx={{ mb: 1.5, color: 'rgba(253,246,238,0.8)', borderColor: 'rgba(253,246,238,0.25)', fontFamily: '"Lora",serif', '&:hover': { borderColor: '#C2622A', color: '#C2622A' } }}>
             Login
           </Button>
-          <Button component={Link} href="/auth/login" fullWidth variant="contained" color="primary"
+          <Button component={Link} href="/auth/register" fullWidth variant="contained" color="primary"
             sx={{ fontFamily: '"Lora",serif', fontWeight: 600 }}>
             Register Your Church
           </Button>
