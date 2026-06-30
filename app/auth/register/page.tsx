@@ -41,6 +41,93 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const homeTheme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#f1E6C5',
+      light: '#FAF4E1',
+      dark: '#2D2D2D',
+      contrastText: '#222222',
+    },
+    secondary: {
+      main: '#FF6E21',
+      light: '#FF6E1f',
+      dark: '#222222',
+      contrastText: '#FAF4E1',
+    },
+    background: {
+      default: '#FAF4E1',
+      paper: '#FAF4E1',
+    },
+    text: {
+      primary: '#222222',
+      secondary: '#2D2D2D',
+    },
+    divider: 'rgba(34,34,34,0.15)',
+  },
+  typography: {
+    fontFamily: '"Lora","Georgia",serif',
+    h1: { fontFamily: '"Playfair Display","Georgia",serif', fontWeight: 700 },
+    h2: { fontFamily: '"Playfair Display","Georgia",serif', fontWeight: 700 },
+    h3: { fontFamily: '"Playfair Display","Georgia",serif', fontWeight: 600 },
+    h4: { fontFamily: '"Playfair Display","Georgia",serif', fontWeight: 600 },
+    h5: { fontFamily: '"Playfair Display","Georgia",serif', fontWeight: 600 },
+    h6: { fontFamily: '"Playfair Display","Georgia",serif', fontWeight: 600 },
+    button: { fontFamily: '"Lora","Georgia",serif', fontWeight: 600, textTransform: 'none' },
+    overline: { fontFamily: '"Lora","Georgia",serif', letterSpacing: '0.1em', fontWeight: 600 },
+    caption: { fontFamily: '"Lora","Georgia",serif' },
+  },
+  shape: { borderRadius: 12 },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: { borderRadius: 8, padding: '9px 22px', boxShadow: 'none', '&:hover': { boxShadow: 'none' } },
+        contained: {
+          '&.MuiButton-colorPrimary': { background: '#f1E6C5', color: '#222222', '&:hover': { background: '#FAF4E1' } },
+          '&.MuiButton-colorSecondary': { background: '#FF6E21', color: '#FAF4E1', '&:hover': { background: '#FF6E1f' } },
+        },
+        outlined: { borderWidth: '1.5px', '&:hover': { borderWidth: '1.5px' } },
+      },
+    },
+    MuiCard: {
+      styleOverrides: { root: { borderRadius: 16, boxShadow: '0 2px 16 rgba(34,34,34,0.07)', border: '1px solid rgba(255,110,33,0.1)' } },
+    },
+    MuiChip: { styleOverrides: { root: { borderRadius: 8, fontFamily: '"Lora","Georgia",serif', fontWeight: 600 } } },
+    MuiLinearProgress: {
+      styleOverrides: {
+        root: { borderRadius: 8, height: 7, backgroundColor: 'rgba(255,110,33,0.15)' },
+        bar: { borderRadius: 8, backgroundColor: '#FF6E21' },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        head: { fontWeight: 700, backgroundColor: '#FAF4E1', color: '#2D2D2D', fontFamily: '"Lora","Georgia",serif', fontSize: '0.73rem', textTransform: 'uppercase', letterSpacing: '0.08em' },
+        body: { fontFamily: '"Lora","Georgia",serif', fontSize: '0.87rem' },
+      },
+    },
+    MuiDrawer: { styleOverrides: { paper: { backgroundColor: '#222222', color: '#FAF4E1' } } },
+    MuiAppBar: { styleOverrides: { root: { backgroundColor: 'transparent', boxShadow: 'none', color: '#222222' } } },
+    MuiAccordion: {
+      styleOverrides: {
+        root: { fontFamily: '"Lora",serif', '&:before': { display: 'none' } },
+      },
+    },
+    MuiAccordionSummary: {
+      styleOverrides: {
+        root: { fontFamily: '"Lora",serif' },
+        content: { margin: '14px 0' },
+      },
+    },
+    MuiAvatar: { styleOverrides: { root: { fontFamily: '"Playfair Display",serif', fontWeight: 700 } } },
+    MuiTextField: { styleOverrides: { root: { '& .MuiInputBase-root': { fontFamily: '"Lora",serif' }, '& .MuiInputLabel-root': { fontFamily: '"Lora",serif' } } } },
+    MuiTab: { styleOverrides: { root: { fontFamily: '"Lora",serif', textTransform: 'none', fontWeight: 400, '&.Mui-selected': { fontWeight: 600, color: '#FF6E21' } } } },
+    MuiTabs: { styleOverrides: { indicator: { backgroundColor: '#FF6E21' } } },
+    MuiListItemText: { styleOverrides: { primary: { fontFamily: '"Lora",serif' }, secondary: { fontFamily: '"Lora",serif' } } },
+  },
+});
 
 // Demo counties in Kenya
 const COUNTIES = [
@@ -183,607 +270,569 @@ export default function RegisterPage() {
   };
 
   return (
-    <Box sx={{ minHeight: '100vh', background: 'linear-gradient(160deg,#1E0F05 0%,#2C1A0E 45%,#3A6B4A 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', p: { xs: 2, sm: 3, md: 4 } }}>
-      <Box sx={{ width: '100%', maxWidth: 1200 }}>
+    <ThemeProvider theme={homeTheme}>
+      <Box sx={{ minHeight: '100vh', background: '#FAF4E1', display: 'flex', alignItems: 'center', justifyContent: 'center', p: { xs: 2, sm: 3, md: 4 } }}>
+        <Box sx={{ width: '100%', maxWidth: 1200 }}>
 
-        <Grid container spacing={4} sx={{ alignItems: 'flex-start', justifyContent: 'center' }}>
+          <Grid container spacing={4} sx={{ alignItems: 'flex-start', justifyContent: 'center' }}>
 
-          {/* Main Registration Form */}
-          <Grid size={{ xs: 12, md: 8 }}>
-            <Card sx={{ background: '#FFFAF4' }}>
-              <CardContent sx={{ p: { xs: 3, sm: 4, md: 5 } }}>
+            {/* Main Registration Form */}
+            <Grid size={{ xs: 12, md: 8 }}>
+              <Card sx={{ background: '#FFFFFF', borderRadius: 4, boxShadow: '0 12px 40px rgba(34,34,34,0.08)', border: '1px solid rgba(255,110,33,0.1)' }}>
+                <CardContent sx={{ p: { xs: 3, sm: 4, md: 5 } }}>
 
-                {/* Branding/Header for form */}
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1.5, mb: 4 }}>
-                  <Box sx={{ width: 40, height: 40, borderRadius: '50%', background: 'linear-gradient(135deg,#C2622A,#3A6B4A)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Typography sx={{ color: '#FDF6EE', fontFamily: '"Playfair Display",serif', fontWeight: 700, fontSize: '1.25rem' }}>S</Typography>
+                  {/* Branding/Header for form */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1.5, mb: 4 }}>
+                    <Box sx={{ width: 36, height: 36, borderRadius: '9px', background: '#FF6E21', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Typography sx={{ color: '#FAF4E1', fontFamily: '"Playfair Display",serif', fontWeight: 700, fontSize: '1.05rem' }}>S</Typography>
+                    </Box>
+                    <Typography sx={{ color: '#222222', fontFamily: '"Playfair Display",serif', fontWeight: 700, fontSize: '1.35rem' }}>ShepherdCare</Typography>
                   </Box>
-                  <Typography sx={{ color: '#2C1A0E', fontFamily: '"Playfair Display",serif', fontWeight: 700, fontSize: '1.35rem' }}>ShepherdCare</Typography>
-                </Box>
 
-                <Typography variant="h4" sx={{ mb: 1, fontFamily: '"Playfair Display",serif', fontWeight: 700, color: '#2C1A0E', textAlign: 'center' }}>
-                  Create Church Account
-                </Typography>
-                <Typography variant="body2" sx={{ color: '#6B4C35', mb: 4, fontFamily: '"Lora",serif', lineHeight: 1.6, textAlign: 'center' }}>
-                  Create your church&apos;s Care for Shepherds workspace and begin supporting your pastor through transparent pastoral wellness fundraising.
-                </Typography>
-
-                {success && (
-                  <Alert severity="success" sx={{ mb: 4, fontFamily: '"Lora",serif', fontSize: '0.9rem' }}>
-                    Registration successful! Your church workspace has been initialized. Redirecting you to login...
-                  </Alert>
-                )}
-
-                {submitError && (
-                  <Alert severity="error" sx={{ mb: 4, fontFamily: '"Lora",serif', fontSize: '0.9rem' }}>
-                    {submitError}
-                  </Alert>
-                )}
-
-                <Box component="form" onSubmit={handleSubmit} noValidate>
-
-                  {/* SECTION 1 — PERSONAL INFORMATION */}
-                  <Typography variant="h6" sx={{ color: '#C2622A', mb: 2, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
-                    1. Personal Information
+                  <Typography variant="h4" sx={{ mb: 1, fontFamily: '"Playfair Display",serif', fontWeight: 700, color: '#222222', textAlign: 'center' }}>
+                    Create Church Account
                   </Typography>
-                  <Grid container spacing={2} sx={{ mb: 4 }}>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField
-                        fullWidth
-                        required
-                        label="Full Name"
-                        value={fullName}
-                        onChange={e => setFullName(e.target.value)}
-                        error={!!errors.fullName}
-                        helperText={errors.fullName}
-                        size="small"
-                        slotProps={{ input: { startAdornment: <InputAdornment position="start"><PersonIcon sx={{ fontSize: 18, color: '#6B4C35' }} /></InputAdornment> } }}
-                      />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField
-                        fullWidth
-                        required
-                        label="Email Address"
-                        type="email"
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
-                        error={!!errors.email}
-                        helperText={errors.email}
-                        size="small"
-                        slotProps={{ input: { startAdornment: <InputAdornment position="start"><EmailIcon sx={{ fontSize: 18, color: '#6B4C35' }} /></InputAdornment> } }}
-                      />
-                    </Grid>
-                    <Grid size={{ xs: 12 }}>
-                      <TextField
-                        fullWidth
-                        required
-                        label="Mobile Phone Number"
-                        placeholder="+2547XXXXXXXX"
-                        value={phone}
-                        onChange={e => setPhone(e.target.value)}
-                        error={!!errors.phone}
-                        helperText={errors.phone || 'Enter your format with county code, e.g., +254712345678'}
-                        size="small"
-                        slotProps={{ input: { startAdornment: <InputAdornment position="start"><PhoneIcon sx={{ fontSize: 18, color: '#6B4C35' }} /></InputAdornment> } }}
-                      />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField
-                        fullWidth
-                        required
-                        label="Password"
-                        type={showPw ? 'text' : 'password'}
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                        error={!!errors.password}
-                        helperText={errors.password}
-                        size="small"
-                        slotProps={{
-                          input: {
-                            startAdornment: <InputAdornment position="start"><LockIcon sx={{ fontSize: 18, color: '#6B4C35' }} /></InputAdornment>,
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                <IconButton size="small" onClick={() => setShowPw(!showPw)}>
-                                  {showPw ? <VisibilityOffIcon sx={{ fontSize: 18 }} /> : <VisibilityIcon sx={{ fontSize: 18 }} />}
-                                </IconButton>
-                              </InputAdornment>
-                            )
-                          }
-                        }}
-                      />
-                      {password && (
-                        <Box sx={{ mt: 1 }}>
-                          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
-                            <Typography variant="caption" sx={{ color: '#6B4C35', fontFamily: '"Lora",serif' }}>Password strength:</Typography>
-                            <Typography variant="caption" sx={{ fontWeight: 600, color: `${pwStrength.color}.main`, fontFamily: '"Lora",serif' }}>
-                              {pwStrength.label}
-                            </Typography>
-                          </Box>
-                          <LinearProgress variant="determinate" value={pwStrength.score} color={pwStrength.color} sx={{ height: 4, borderRadius: 2 }} />
-                        </Box>
-                      )}
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField
-                        fullWidth
-                        required
-                        label="Confirm Password"
-                        type={showConfirmPw ? 'text' : 'password'}
-                        value={confirmPassword}
-                        onChange={e => setConfirmPassword(e.target.value)}
-                        error={!!errors.confirmPassword}
-                        helperText={errors.confirmPassword}
-                        size="small"
-                        slotProps={{
-                          input: {
-                            startAdornment: <InputAdornment position="start"><LockIcon sx={{ fontSize: 18, color: '#6B4C35' }} /></InputAdornment>,
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                <IconButton size="small" onClick={() => setShowConfirmPw(!showConfirmPw)}>
-                                  {showConfirmPw ? <VisibilityOffIcon sx={{ fontSize: 18 }} /> : <VisibilityIcon sx={{ fontSize: 18 }} />}
-                                </IconButton>
-                              </InputAdornment>
-                            )
-                          }
-                        }}
-                      />
-                    </Grid>
-                  </Grid>
-
-                  <Divider sx={{ my: 3 }} />
-
-                  {/* SECTION 2 — CHURCH INFORMATION */}
-                  <Typography variant="h6" sx={{ color: '#C2622A', mb: 2, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
-                    2. Church Information
+                  <Typography variant="body2" sx={{ color: '#2D2D2D', mb: 4, fontFamily: '"Lora",serif', lineHeight: 1.6, textAlign: 'center' }}>
+                    Create your church&apos;s Care for Shepherds workspace and begin supporting your pastor through transparent pastoral wellness fundraising.
                   </Typography>
-                  <Grid container spacing={2} sx={{ mb: 4 }}>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField
-                        fullWidth
-                        required
-                        label="Church Name"
-                        value={churchName}
-                        onChange={e => setChurchName(e.target.value)}
-                        error={!!errors.churchName}
-                        helperText={errors.churchName}
-                        size="small"
-                        slotProps={{ input: { startAdornment: <InputAdornment position="start"><BusinessIcon sx={{ fontSize: 18, color: '#6B4C35' }} /></InputAdornment> } }}
-                      />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField
-                        fullWidth
-                        label="Denomination (Optional)"
-                        placeholder="e.g. Anglican, Baptist, Pentecostal..."
-                        value={denomination}
-                        onChange={e => setDenomination(e.target.value)}
-                        size="small"
-                      />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField
-                        fullWidth
-                        label="Church Registration Number (Optional)"
-                        value={regNumber}
-                        onChange={e => setRegNumber(e.target.value)}
-                        size="small"
-                      />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <TextField
-                        fullWidth
-                        label="Church Website (Optional)"
-                        placeholder="e.g. www.mychurch.org"
-                        value={website}
-                        onChange={e => setWebsite(e.target.value)}
-                        size="small"
-                      />
-                    </Grid>
 
-                    {/* Location fields */}
-                    <Grid size={{ xs: 12, sm: 4 }}>
-                      <TextField
-                        fullWidth
-                        disabled
-                        label="Country"
-                        value={country}
-                        size="small"
-                        slotProps={{ input: { startAdornment: <InputAdornment position="start"><MapIcon sx={{ fontSize: 18, color: '#6B4C35' }} /></InputAdornment> } }}
-                      />
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 4 }}>
-                      <FormControl fullWidth size="small">
-                        <InputLabel id="county-label">County</InputLabel>
-                        <Select
-                          labelId="county-label"
-                          label="County"
-                          value={county}
-                          onChange={e => setCounty(e.target.value)}
-                        >
-                          <MenuItem value=""><em>Select County</em></MenuItem>
-                          {COUNTIES.map(c => (
-                            <MenuItem key={c} value={c}>{c}</MenuItem>
-                          ))}
-                        </Select>
-                      </FormControl>
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 4 }}>
-                      <TextField
-                        fullWidth
-                        label="City / Town"
-                        value={city}
-                        onChange={e => setCity(e.target.value)}
-                        size="small"
-                      />
-                    </Grid>
-                  </Grid>
-
-                  <Divider sx={{ my: 3 }} />
-
-                  {/* SECTION 3 — PASTOR INFORMATION */}
-                  <Typography variant="h6" sx={{ color: '#C2622A', mb: 2, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
-                    3. Pastor Information
-                  </Typography>
-                  <Grid container spacing={2} sx={{ mb: 4 }}>
-                    <Grid size={{ xs: 12 }}>
-                      <TextField
-                        fullWidth
-                        required
-                        label="Pastor Full Name"
-                        value={pastorName}
-                        onChange={e => setPastorName(e.target.value)}
-                        error={!!errors.pastorName}
-                        helperText={errors.pastorName || "This information is used to initialize your church's Pastoral Wellness Fund."}
-                        size="small"
-                        slotProps={{ input: { startAdornment: <InputAdornment position="start"><PersonIcon sx={{ fontSize: 18, color: '#6B4C35' }} /></InputAdornment> } }}
-                      />
-                    </Grid>
-                  </Grid>
-
-                  <Divider sx={{ my: 3 }} />
-
-                  {/* SECTION 4 — CONFIRM YOUR ROLE */}
-                  <Typography variant="h6" sx={{ color: '#C2622A', mb: 1, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
-                    4. Confirm Your Role
-                  </Typography>
-                  <Typography variant="subtitle2" sx={{ color: '#2C1A0E', mb: 2, fontFamily: '"Lora",serif', fontWeight: 600 }}>
-                    Who are you?
-                  </Typography>
-                  <FormControl error={!!errors.role} component="fieldset" sx={{ width: '100%', mb: 4 }}>
-                    <RadioGroup
-                      value={role}
-                      onChange={e => {
-                        setRole(e.target.value);
-                        if (e.target.value !== 'other') setOtherRole('');
-                      }}
-                      sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 0.5 }}
-                    >
-                      {ROLES.map(r => (
-                        <FormControlLabel
-                          key={r.value}
-                          value={r.value}
-                          control={<Radio sx={{ color: '#C2622A', '&.Mui-checked': { color: '#C2622A' } }} />}
-                          label={<Typography sx={{ fontFamily: '"Lora",serif', fontSize: '0.9rem' }}>{r.label}</Typography>}
-                        />
-                      ))}
-                    </RadioGroup>
-                    {errors.role && <FormHelperText>{errors.role}</FormHelperText>}
-
-                    {role === 'other' && (
-                      <TextField
-                        required
-                        fullWidth
-                        label="Other Role"
-                        value={otherRole}
-                        onChange={e => setOtherRole(e.target.value)}
-                        error={!!errors.otherRole}
-                        helperText={errors.otherRole}
-                        size="small"
-                        sx={{ mt: 2 }}
-                      />
-                    )}
-                  </FormControl>
-
-                  <Divider sx={{ my: 3 }} />
-
-                  {/* SECTION 5 — AUTHORIZATION CONFIRMATION */}
-                  <Typography variant="h6" sx={{ color: '#C2622A', mb: 2, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
-                    5. Authorization Confirmation
-                  </Typography>
-                  <Card sx={{ background: 'rgba(194,98,42,0.06)', border: '1px solid rgba(194,98,42,0.2)', mb: 3 }}>
-                    <CardContent sx={{ p: 2.5, display: 'flex', gap: 2, alignItems: 'flex-start' }}>
-                      <InfoOutlinedIcon sx={{ color: '#C2622A', mt: 0.2 }} />
-                      <Box>
-                        <Typography sx={{ fontWeight: 700, color: '#2C1A0E', fontSize: '0.88rem', fontFamily: '"Lora",serif', mb: 0.5 }}>
-                          Authorized Representatives Only
-                        </Typography>
-                        <Typography sx={{ color: '#6B4C35', fontSize: '0.82rem', fontFamily: '"Lora",serif', lineHeight: 1.5 }}>
-                          To ensure accountability and prevent unauthorized registrations, Care for Shepherds requires all church workspaces to be created by authorized representatives (pastors, board members, administrators, or finance officers) of the church.
-                        </Typography>
-                      </Box>
-                    </CardContent>
-                  </Card>
-
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={authorized}
-                        onChange={e => setAuthorized(e.target.checked)}
-                        sx={{ color: '#C2622A', '&.Mui-checked': { color: '#C2622A' } }}
-                      />
-                    }
-                    label={
-                      <Typography sx={{ fontFamily: '"Lora",serif', fontSize: '0.88rem', fontWeight: 600, color: '#2C1A0E' }}>
-                        I confirm that I am authorized by this church to create and manage this Care for Shepherds account. *
-                      </Typography>
-                    }
-                    sx={{ mb: 4, display: 'flex', alignItems: 'flex-start' }}
-                  />
-                  {errors.authorized && (
-                    <Typography variant="caption" color="error" sx={{ display: 'block', mt: -3, mb: 4, ml: 4, fontFamily: '"Lora",serif' }}>
-                      {errors.authorized}
-                    </Typography>
+                  {success && (
+                    <Alert severity="success" sx={{ mb: 4, fontFamily: '"Lora",serif', fontSize: '0.9rem' }}>
+                      Registration successful! Your church workspace has been initialized. Redirecting you to login...
+                    </Alert>
                   )}
 
-                  <Divider sx={{ my: 3 }} />
+                  {submitError && (
+                    <Alert severity="error" sx={{ mb: 4, fontFamily: '"Lora",serif', fontSize: '0.9rem' }}>
+                      {submitError}
+                    </Alert>
+                  )}
 
-                  {/* SECTION 6 — ACCOUNT VERIFICATION */}
-                  <Typography variant="h6" sx={{ color: '#C2622A', mb: 1, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
-                    6. Verify Your Identity
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: '#6B4C35', mb: 3, fontFamily: '"Lora",serif', lineHeight: 1.5 }}>
-                    To protect churches and ensure fundraising transparency, every administrator must verify their identity.
-                  </Typography>
+                  <Box component="form" onSubmit={handleSubmit} noValidate>
 
-                  <Grid container spacing={3} sx={{ mb: 4 }}>
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <Box sx={{ p: 2.5, border: '1px solid rgba(194,98,42,0.15)', borderRadius: 2, background: '#FFFAF4', position: 'relative' }}>
-                        <Typography sx={{ fontWeight: 700, fontFamily: '"Lora",serif', color: '#2C1A0E', fontSize: '0.9rem', mb: 1 }}>
-                          Email Verification
-                        </Typography>
-                        <Typography sx={{ color: '#6B4C35', fontSize: '0.8rem', fontFamily: '"Lora",serif', mb: 2, lineHeight: 1.5 }}>
-                          A verification link will be sent to your email address once your registration completes.
-                        </Typography>
-                        <Chip label="Pending Verification" size="small" variant="outlined" sx={{ borderColor: 'rgba(194,98,42,0.4)', color: '#C2622A', fontSize: '0.7rem' }} />
-                      </Box>
+                    {/* SECTION 1 — PERSONAL INFORMATION */}
+                    <Typography variant="h6" sx={{ color: '#FF6E21', mb: 2, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
+                      1. Personal Information
+                    </Typography>
+                    <Grid container spacing={2} sx={{ mb: 4 }}>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField
+                          fullWidth
+                          required
+                          label="Full Name"
+                          value={fullName}
+                          onChange={e => setFullName(e.target.value)}
+                          error={!!errors.fullName}
+                          helperText={errors.fullName}
+                          size="small"
+                          slotProps={{ input: { startAdornment: <InputAdornment position="start"><PersonIcon sx={{ fontSize: 18, color: '#2D2D2D' }} /></InputAdornment> } }}
+                        />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField
+                          fullWidth
+                          required
+                          label="Email Address"
+                          type="email"
+                          value={email}
+                          onChange={e => setEmail(e.target.value)}
+                          error={!!errors.email}
+                          helperText={errors.email}
+                          size="small"
+                          slotProps={{ input: { startAdornment: <InputAdornment position="start"><EmailIcon sx={{ fontSize: 18, color: '#2D2D2D' }} /></InputAdornment> } }}
+                        />
+                      </Grid>
+                      <Grid size={{ xs: 12 }}>
+                        <TextField
+                          fullWidth
+                          required
+                          label="Mobile Phone Number"
+                          placeholder="+2547XXXXXXXX"
+                          value={phone}
+                          onChange={e => setPhone(e.target.value)}
+                          error={!!errors.phone}
+                          helperText={errors.phone || 'Enter your format with county code, e.g., +254712345678'}
+                          size="small"
+                          slotProps={{ input: { startAdornment: <InputAdornment position="start"><PhoneIcon sx={{ fontSize: 18, color: '#2D2D2D' }} /></InputAdornment> } }}
+                        />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField
+                          fullWidth
+                          required
+                          label="Password"
+                          type={showPw ? 'text' : 'password'}
+                          value={password}
+                          onChange={e => setPassword(e.target.value)}
+                          error={!!errors.password}
+                          helperText={errors.password}
+                          size="small"
+                          slotProps={{
+                            input: {
+                              startAdornment: <InputAdornment position="start"><LockIcon sx={{ fontSize: 18, color: '#2D2D2D' }} /></InputAdornment>,
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <IconButton size="small" onClick={() => setShowPw(!showPw)}>
+                                    {showPw ? <VisibilityOffIcon sx={{ fontSize: 18, color: '#2D2D2D' }} /> : <VisibilityIcon sx={{ fontSize: 18, color: '#2D2D2D' }} />}
+                                  </IconButton>
+                                </InputAdornment>
+                              )
+                            }
+                          }}
+                        />
+                        {password && (
+                          <Box sx={{ mt: 1 }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
+                              <Typography variant="caption" sx={{ color: '#2D2D2D', fontFamily: '"Lora",serif' }}>Password strength:</Typography>
+                              <Typography variant="caption" sx={{ fontWeight: 600, color: `${pwStrength.color}.main`, fontFamily: '"Lora",serif' }}>
+                                {pwStrength.label}
+                              </Typography>
+                            </Box>
+                            <LinearProgress variant="determinate" value={pwStrength.score} color={pwStrength.color} sx={{ height: 4, borderRadius: 2 }} />
+                          </Box>
+                        )}
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField
+                          fullWidth
+                          required
+                          label="Confirm Password"
+                          type={showConfirmPw ? 'text' : 'password'}
+                          value={confirmPassword}
+                          onChange={e => setConfirmPassword(e.target.value)}
+                          error={!!errors.confirmPassword}
+                          helperText={errors.confirmPassword}
+                          size="small"
+                          slotProps={{
+                            input: {
+                              startAdornment: <InputAdornment position="start"><LockIcon sx={{ fontSize: 18, color: '#2D2D2D' }} /></InputAdornment>,
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <IconButton size="small" onClick={() => setShowConfirmPw(!showConfirmPw)}>
+                                    {showConfirmPw ? <VisibilityOffIcon sx={{ fontSize: 18, color: '#2D2D2D' }} /> : <VisibilityIcon sx={{ fontSize: 18, color: '#2D2D2D' }} />}
+                                  </IconButton>
+                                </InputAdornment>
+                              )
+                            }
+                          }}
+                        />
+                      </Grid>
                     </Grid>
 
-                    <Grid size={{ xs: 12, sm: 6 }}>
-                      <Box sx={{ p: 2.5, border: '1px solid rgba(194,98,42,0.15)', borderRadius: 2, background: '#FFFAF4', position: 'relative' }}>
-                        <Typography sx={{ fontWeight: 700, fontFamily: '"Lora",serif', color: '#2C1A0E', fontSize: '0.9rem', mb: 1 }}>
-                          Phone Verification (OTP)
-                        </Typography>
-                        <Typography sx={{ color: '#6B4C35', fontSize: '0.8rem', fontFamily: '"Lora",serif', mb: 2, lineHeight: 1.5 }}>
-                          Receive a 6-digit one-time PIN (OTP) code on your mobile device via SMS.
-                        </Typography>
-                        <Chip label="Enabled" size="small" sx={{ background: '#EAF3DE', color: '#244530', fontSize: '0.7rem' }} />
-                      </Box>
+                    <Divider sx={{ my: 3 }} />
+
+                    {/* SECTION 2 — CHURCH INFORMATION */}
+                    <Typography variant="h6" sx={{ color: '#FF6E21', mb: 2, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
+                      2. Church Information
+                    </Typography>
+                    <Grid container spacing={2} sx={{ mb: 4 }}>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField
+                          fullWidth
+                          required
+                          label="Church Name"
+                          value={churchName}
+                          onChange={e => setChurchName(e.target.value)}
+                          error={!!errors.churchName}
+                          helperText={errors.churchName}
+                          size="small"
+                          slotProps={{ input: { startAdornment: <InputAdornment position="start"><BusinessIcon sx={{ fontSize: 18, color: '#2D2D2D' }} /></InputAdornment> } }}
+                        />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField
+                          fullWidth
+                          label="Denomination (Optional)"
+                          placeholder="e.g. Anglican, Baptist, Pentecostal..."
+                          value={denomination}
+                          onChange={e => setDenomination(e.target.value)}
+                          size="small"
+                        />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField
+                          fullWidth
+                          label="Church Registration Number (Optional)"
+                          value={regNumber}
+                          onChange={e => setRegNumber(e.target.value)}
+                          size="small"
+                        />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <TextField
+                          fullWidth
+                          label="Church Website (Optional)"
+                          placeholder="e.g. www.mychurch.org"
+                          value={website}
+                          onChange={e => setWebsite(e.target.value)}
+                          size="small"
+                        />
+                      </Grid>
+
+                      {/* Location fields */}
+                      <Grid size={{ xs: 12, sm: 4 }}>
+                        <TextField
+                          fullWidth
+                          disabled
+                          label="Country"
+                          value={country}
+                          size="small"
+                          slotProps={{ input: { startAdornment: <InputAdornment position="start"><MapIcon sx={{ fontSize: 18, color: '#2D2D2D' }} /></InputAdornment> } }}
+                        />
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 4 }}>
+                        <FormControl fullWidth size="small">
+                          <InputLabel id="county-label">County</InputLabel>
+                          <Select
+                            labelId="county-label"
+                            label="County"
+                            value={county}
+                            onChange={e => setCounty(e.target.value)}
+                          >
+                            <MenuItem value=""><em>Select County</em></MenuItem>
+                            {COUNTIES.map(c => (
+                              <MenuItem key={c} value={c}>{c}</MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid size={{ xs: 12, sm: 4 }}>
+                        <TextField
+                          fullWidth
+                          label="City / Town"
+                          value={city}
+                          onChange={e => setCity(e.target.value)}
+                          size="small"
+                        />
+                      </Grid>
                     </Grid>
 
-                    <Grid size={{ xs: 12 }}>
-                      <Box sx={{ p: 2.5, border: '1px dashed rgba(107,76,53,0.3)', borderRadius: 2, background: 'rgba(107,76,53,0.02)' }}>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                          <VerifiedUserIcon sx={{ color: '#6B4C35', fontSize: 18 }} />
-                          <Typography sx={{ fontWeight: 700, fontFamily: '"Lora",serif', color: '#2C1A0E', fontSize: '0.9rem' }}>
-                            Church Authorization Verification (Future Release)
+                    <Divider sx={{ my: 3 }} />
+
+                    {/* SECTION 3 — PASTOR INFORMATION */}
+                    <Typography variant="h6" sx={{ color: '#FF6E21', mb: 2, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
+                      3. Pastor Information
+                    </Typography>
+                    <Grid container spacing={2} sx={{ mb: 4 }}>
+                      <Grid size={{ xs: 12 }}>
+                        <TextField
+                          fullWidth
+                          required
+                          label="Pastor Full Name"
+                          value={pastorName}
+                          onChange={e => setPastorName(e.target.value)}
+                          error={!!errors.pastorName}
+                          helperText={errors.pastorName || "This information is used to initialize your church's Pastoral Wellness Fund."}
+                          size="small"
+                          slotProps={{ input: { startAdornment: <InputAdornment position="start"><PersonIcon sx={{ fontSize: 18, color: '#2D2D2D' }} /></InputAdornment> } }}
+                        />
+                      </Grid>
+                    </Grid>
+
+                    <Divider sx={{ my: 3 }} />
+
+                    {/* SECTION 4 — CONFIRM YOUR ROLE */}
+                    <Typography variant="h6" sx={{ color: '#FF6E21', mb: 1, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
+                      4. Confirm Your Role
+                    </Typography>
+                    <Typography variant="subtitle2" sx={{ color: '#222222', mb: 2, fontFamily: '"Lora",serif', fontWeight: 600 }}>
+                      Who are you?
+                    </Typography>
+                    <FormControl error={!!errors.role} component="fieldset" sx={{ width: '100%', mb: 4 }}>
+                      <RadioGroup
+                        value={role}
+                        onChange={e => {
+                          setRole(e.target.value);
+                          if (e.target.value !== 'other') setOtherRole('');
+                        }}
+                        sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 0.5 }}
+                      >
+                        {ROLES.map(r => (
+                          <FormControlLabel
+                            key={r.value}
+                            value={r.value}
+                            control={<Radio sx={{ color: '#FF6E21', '&.Mui-checked': { color: '#FF6E21' } }} />}
+                            label={<Typography sx={{ fontFamily: '"Lora",serif', fontSize: '0.9rem', color: '#222222' }}>{r.label}</Typography>}
+                          />
+                        ))}
+                      </RadioGroup>
+                      {errors.role && <FormHelperText>{errors.role}</FormHelperText>}
+
+                      {role === 'other' && (
+                        <TextField
+                          required
+                          fullWidth
+                          label="Other Role"
+                          value={otherRole}
+                          onChange={e => setOtherRole(e.target.value)}
+                          error={!!errors.otherRole}
+                          helperText={errors.otherRole}
+                          size="small"
+                          sx={{ mt: 2 }}
+                        />
+                      )}
+                    </FormControl>
+
+                    <Divider sx={{ my: 3 }} />
+
+                    {/* SECTION 5 — AUTHORIZATION CONFIRMATION */}
+                    <Typography variant="h6" sx={{ color: '#FF6E21', mb: 2, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
+                      5. Authorization Confirmation
+                    </Typography>
+                    <Card sx={{ background: 'rgba(255,110,33,0.06)', border: '1px solid rgba(255,110,33,0.2)', mb: 3 }}>
+                      <CardContent sx={{ p: 2.5, display: 'flex', gap: 2, alignItems: 'flex-start' }}>
+                        <InfoOutlinedIcon sx={{ color: '#FF6E21', mt: 0.2 }} />
+                        <Box>
+                          <Typography sx={{ fontWeight: 700, color: '#222222', fontSize: '0.88rem', fontFamily: '"Lora",serif', mb: 0.5 }}>
+                            Authorized Representatives Only
+                          </Typography>
+                          <Typography sx={{ color: '#2D2D2D', fontSize: '0.82rem', fontFamily: '"Lora",serif', lineHeight: 1.5 }}>
+                            To ensure accountability and prevent unauthorized registrations, Care for Shepherds requires all church workspaces to be created by authorized representatives (pastors, board members, administrators, or finance officers) of the church.
                           </Typography>
                         </Box>
-                        <Typography sx={{ color: '#6B4C35', fontSize: '0.8rem', fontFamily: '"Lora",serif', lineHeight: 1.5 }}>
-                          This feature will allow churches to upload proof of authorization (such as certificate of registration or denomination letter) in a future release.
+                      </CardContent>
+                    </Card>
+
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={authorized}
+                          onChange={e => setAuthorized(e.target.checked)}
+                          sx={{ color: '#FF6E21', '&.Mui-checked': { color: '#FF6E21' } }}
+                        />
+                      }
+                      label={
+                        <Typography sx={{ fontFamily: '"Lora",serif', fontSize: '0.88rem', fontWeight: 600, color: '#222222' }}>
+                          I confirm that I am authorized by this church to create and manage this Care for Shepherds account. *
                         </Typography>
-                      </Box>
-                    </Grid>
-                  </Grid>
+                      }
+                      sx={{ mb: 4, display: 'flex', alignItems: 'flex-start' }}
+                    />
+                    {errors.authorized && (
+                      <Typography variant="caption" color="error" sx={{ display: 'block', mt: -3, mb: 4, ml: 4, fontFamily: '"Lora",serif' }}>
+                        {errors.authorized}
+                      </Typography>
+                    )}
 
-                  <Divider sx={{ my: 3 }} />
+                    <Divider sx={{ my: 3 }} />
 
-                  {/* SECTION 7 — SUBSCRIPTION */}
-                  <Typography variant="h6" sx={{ color: '#C2622A', mb: 2, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
-                    7. Subscription Plan
-                  </Typography>
-                  <Grid container spacing={2} sx={{ mb: 4 }}>
-                    {PLANS.map(p => {
-                      const isSelected = selectedPlan === p.id;
-                      return (
-                        <Grid size={{ xs: 12, sm: 6 }} key={p.id}>
-                          <Box
-                            onClick={() => setSelectedPlan(p.id)}
-                            sx={{
-                              p: 2.5,
-                              borderRadius: 3,
-                              border: isSelected ? '2px solid #C2622A' : '1px solid rgba(194,98,42,0.15)',
-                              background: isSelected ? '#FAECE7' : '#FFFAF4',
-                              cursor: 'pointer',
-                              transition: 'all 0.2s',
-                              position: 'relative',
-                              height: '100%',
-                              display: 'flex',
-                              flexDirection: 'column',
-                              '&:hover': {
-                                borderColor: '#C2622A',
-                                boxShadow: '0 4px 12px rgba(44,26,14,0.06)'
-                              }
-                            }}
-                          >
-                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
-                              <Typography sx={{ fontWeight: 700, color: '#2C1A0E', fontFamily: '"Playfair Display",serif', fontSize: '1rem' }}>
-                                {p.name}
-                              </Typography>
-                              {isSelected && <CheckCircleIcon sx={{ color: '#C2622A', fontSize: 20 }} />}
-                            </Box>
+                    {/* SECTION 6 — ACCOUNT VERIFICATION */}
+                    <Typography variant="h6" sx={{ color: '#FF6E21', mb: 1, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
+                      6. Verify Your Identity
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: '#2D2D2D', mb: 3, fontFamily: '"Lora",serif', lineHeight: 1.5 }}>
+                      To protect churches and ensure fundraising transparency, every administrator must verify their identity.
+                    </Typography>
 
-                            <Box sx={{ mb: 1.5 }}>
-                              <Typography sx={{ fontWeight: 700, color: '#C2622A', fontSize: '1.25rem', fontFamily: '"Playfair Display",serif', display: 'inline' }}>
-                                {p.price}
-                              </Typography>
-                              <Typography sx={{ color: '#6B4C35', fontSize: '0.78rem', fontFamily: '"Lora",serif', display: 'inline', ml: 0.5 }}>
-                                {p.period}
-                              </Typography>
-                            </Box>
+                    <Grid container spacing={3} sx={{ mb: 4 }}>
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <Box sx={{ p: 2.5, border: '1px solid rgba(255,110,33,0.15)', borderRadius: 2, background: '#FFFFFF', position: 'relative' }}>
+                          <Typography sx={{ fontWeight: 700, fontFamily: '"Lora",serif', color: '#222222', fontSize: '0.9rem', mb: 1 }}>
+                            Email Verification
+                          </Typography>
+                          <Typography sx={{ color: '#2D2D2D', fontSize: '0.8rem', fontFamily: '"Lora",serif', mb: 2, lineHeight: 1.5 }}>
+                            A verification link will be sent to your email address once your registration completes.
+                          </Typography>
+                          <Chip label="Pending Verification" size="small" variant="outlined" sx={{ borderColor: 'rgba(255,110,33,0.4)', color: '#FF6E21', fontSize: '0.7rem' }} />
+                        </Box>
+                      </Grid>
 
-                            <Typography sx={{ color: '#6B4C35', fontSize: '0.78rem', fontFamily: '"Lora",serif', lineHeight: 1.5, flexGrow: 1 }}>
-                              {p.desc}
+                      <Grid size={{ xs: 12, sm: 6 }}>
+                        <Box sx={{ p: 2.5, border: '1px solid rgba(255,110,33,0.15)', borderRadius: 2, background: '#FFFFFF', position: 'relative' }}>
+                          <Typography sx={{ fontWeight: 700, fontFamily: '"Lora",serif', color: '#222222', fontSize: '0.9rem', mb: 1 }}>
+                            Phone Verification (OTP)
+                          </Typography>
+                          <Typography sx={{ color: '#2D2D2D', fontSize: '0.8rem', fontFamily: '"Lora",serif', mb: 2, lineHeight: 1.5 }}>
+                            Receive a 6-digit one-time PIN (OTP) code on your mobile device via SMS.
+                          </Typography>
+                          <Chip label="Enabled" size="small" sx={{ background: '#FAF4E1', color: '#222222', fontSize: '0.7rem', border: '1px solid rgba(255,110,33,0.15)' }} />
+                        </Box>
+                      </Grid>
+
+                      <Grid size={{ xs: 12 }}>
+                        <Box sx={{ p: 2.5, border: '1px dashed rgba(34,34,34,0.3)', borderRadius: 2, background: 'rgba(34,34,34,0.02)' }}>
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                            <VerifiedUserIcon sx={{ color: '#2D2D2D', fontSize: 18 }} />
+                            <Typography sx={{ fontWeight: 700, fontFamily: '"Lora",serif', color: '#222222', fontSize: '0.9rem' }}>
+                              Church Authorization Verification (Future Release)
                             </Typography>
                           </Box>
-                        </Grid>
-                      );
-                    })}
-                  </Grid>
+                          <Typography sx={{ color: '#2D2D2D', fontSize: '0.8rem', fontFamily: '"Lora",serif', lineHeight: 1.5 }}>
+                            This feature will allow churches to upload proof of authorization (such as certificate of registration or denomination letter) in a future release.
+                          </Typography>
+                        </Box>
+                      </Grid>
+                    </Grid>
 
-                  <Divider sx={{ my: 3 }} />
+                    <Divider sx={{ my: 3 }} />
 
-                  {/* SECTION 8 — TERMS & CONDITIONS */}
-                  <Typography variant="h6" sx={{ color: '#C2622A', mb: 2, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
-                    8. Terms & Conditions
-                  </Typography>
-                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, mb: 4 }}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={termsAgree}
-                          onChange={e => setTermsAgree(e.target.checked)}
-                          sx={{ color: '#C2622A', '&.Mui-checked': { color: '#C2622A' } }}
-                        />
-                      }
-                      label={
-                        <Typography sx={{ fontFamily: '"Lora",serif', fontSize: '0.85rem', color: '#2C1A0E' }}>
-                          I agree to the <Box component="span" sx={{ color: '#C2622A', fontWeight: 600, textDecoration: 'underline', cursor: 'pointer' }}>Terms and Conditions</Box>. *
-                        </Typography>
-                      }
-                    />
-                    {errors.termsAgree && (
-                      <Typography variant="caption" color="error" sx={{ mt: -1, ml: 4, fontFamily: '"Lora",serif' }}>
-                        {errors.termsAgree}
-                      </Typography>
-                    )}
-
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={privacyAgree}
-                          onChange={e => setPrivacyAgree(e.target.checked)}
-                          sx={{ color: '#C2622A', '&.Mui-checked': { color: '#C2622A' } }}
-                        />
-                      }
-                      label={
-                        <Typography sx={{ fontFamily: '"Lora",serif', fontSize: '0.85rem', color: '#2C1A0E' }}>
-                          I agree to the <Box component="span" sx={{ color: '#C2622A', fontWeight: 600, textDecoration: 'underline', cursor: 'pointer' }}>Privacy Policy</Box>. *
-                        </Typography>
-                      }
-                    />
-                    {errors.privacyAgree && (
-                      <Typography variant="caption" color="error" sx={{ mt: -1, ml: 4, fontFamily: '"Lora",serif' }}>
-                        {errors.privacyAgree}
-                      </Typography>
-                    )}
-
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={fundsAcknowledge}
-                          onChange={e => setFundsAcknowledge(e.target.checked)}
-                          sx={{ color: '#C2622A', '&.Mui-checked': { color: '#C2622A' } }}
-                        />
-                      }
-                      label={
-                        <Typography sx={{ fontFamily: '"Lora",serif', fontSize: '0.85rem', color: '#2C1A0E' }}>
-                          I understand that Care for Shepherds does not hold church funds and that all fundraising remains under my church&apos;s control. *
-                        </Typography>
-                      }
-                      sx={{ display: 'flex', alignItems: 'flex-start' }}
-                    />
-                    {errors.fundsAcknowledge && (
-                      <Typography variant="caption" color="error" sx={{ mt: -1, ml: 4, fontFamily: '"Lora",serif' }}>
-                        {errors.fundsAcknowledge}
-                      </Typography>
-                    )}
-                  </Box>
-
-                  <Divider sx={{ my: 3 }} />
-
-                  {/* SUBMIT SECTION */}
-                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                      fullWidth
-                      size="large"
-                      disabled={loading || !authorized || !termsAgree || !privacyAgree || !fundsAcknowledge}
-                      endIcon={<ArrowForwardIcon />}
-                      sx={{ py: 1.5, fontSize: '1rem', fontWeight: 700 }}
-                    >
-                      {loading ? 'Registering Workspace...' : 'Create Church Account'}
-                    </Button>
-
-                    <Button
-                      component={Link}
-                      href="/auth/login"
-                      variant="outlined"
-                      fullWidth
-                      size="large"
-                      startIcon={<ArrowBackIcon />}
-                      sx={{ py: 1.5, fontSize: '0.9rem', color: '#6B4C35', borderColor: 'rgba(194,98,42,0.3)', '&:hover': { borderColor: '#C2622A', background: 'transparent' } }}
-                    >
-                      Back to Login
-                    </Button>
-
-                    <Typography variant="body2" sx={{ textAlign: 'center', color: '#6B4C35', mt: 1, fontFamily: '"Lora",serif' }}>
-                      Already have an account?{' '}
-                      <Box component={Link} href="/auth/login" sx={{ color: '#C2622A', fontWeight: 700, textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
-                        Login
-                      </Box>
+                    {/* SECTION 7 — SUBSCRIPTION */}
+                    <Typography variant="h6" sx={{ color: '#FF6E21', mb: 2, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
+                      7. Subscription Plan
                     </Typography>
-                  </Box>
+                    <Grid container spacing={2} sx={{ mb: 4 }}>
+                      {PLANS.map(p => {
+                        const isSelected = selectedPlan === p.id;
+                        return (
+                          <Grid size={{ xs: 12, sm: 6 }} key={p.id}>
+                            <Box
+                              onClick={() => setSelectedPlan(p.id)}
+                              sx={{
+                                p: 2.5,
+                                borderRadius: 3,
+                                border: isSelected ? '2px solid #FF6E21' : '1px solid rgba(255,110,33,0.15)',
+                                background: isSelected ? 'rgba(255,110,33,0.08)' : '#FFFFFF',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s',
+                                position: 'relative',
+                                height: '100%',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                '&:hover': {
+                                  borderColor: '#FF6E21',
+                                  boxShadow: '0 4px 12px rgba(34,34,34,0.06)'
+                                }
+                              }}
+                            >
+                              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
+                                <Typography sx={{ fontWeight: 700, color: '#222222', fontFamily: '"Playfair Display",serif', fontSize: '1rem' }}>
+                                  {p.name}
+                                </Typography>
+                                {isSelected && <CheckCircleIcon sx={{ color: '#FF6E21', fontSize: 20 }} />}
+                              </Box>
 
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
+                              <Box sx={{ mb: 1.5 }}>
+                                <Typography sx={{ fontWeight: 700, color: '#FF6E21', fontSize: '1.25rem', fontFamily: '"Playfair Display",serif', display: 'inline' }}>
+                                  {p.price}
+                                </Typography>
+                                <Typography sx={{ color: '#2D2D2D', fontSize: '0.78rem', fontFamily: '"Lora",serif', display: 'inline', ml: 0.5 }}>
+                                  {p.period}
+                                </Typography>
+                              </Box>
 
-          {/* RIGHT-SIDE INFORMATION PANEL (Desktop) */}
-          {/* <Grid size={{ xs: 12, md: 4 }}>
-            <Card sx={{ background: 'rgba(255,248,242,0.06)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,248,242,0.12)', color: '#FDF6EE' }}>
-              <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
-                <Typography variant="h5" sx={{ mb: 3, fontFamily: '"Playfair Display",serif', fontWeight: 700, color: '#FDF6EE' }}>
-                  Why Join Care for Shepherds?
-                </Typography>
+                              <Typography sx={{ color: '#2D2D2D', fontSize: '0.78rem', fontFamily: '"Lora",serif', lineHeight: 1.5, flexGrow: 1 }}>
+                                {p.desc}
+                              </Typography>
+                            </Box>
+                          </Grid>
+                        );
+                      })}
+                    </Grid>
 
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, mb: 4 }}>
-                  {[
-                    { title: 'Dedicated Pastoral Wellness Fund', desc: 'Separate your wellness fundraising operationally and legally from general church finances.' },
-                    { title: 'Transparent Fundraising', desc: 'A real-time public fund ledger that shows exactly how wellness funds are collected and approved.' },
-                    { title: 'M-Pesa Giving', desc: 'Congregation members give easily via M-Pesa STK push. No apps or bank registrations required.' },
-                    { title: 'Accountability & Public Ledger', desc: 'All transactions appear on a secure ledger. Disbursements require dual authorizations.' },
-                    { title: 'Campaign Progress Tracking', desc: 'Initialize standard or customized retreats, sabbaticals, and counseling goals with progression bars.' },
-                    { title: 'Secure Church Workspace', desc: 'Role-based access controls for pastors, administrators, finance officers, and denominations.' },
-                  ].map(f => (
-                    <Box key={f.title} sx={{ display: 'flex', gap: 1.5, alignItems: 'flex-start' }}>
-                      <CheckCircleIcon sx={{ color: '#C2622A', fontSize: 18, mt: 0.3 }} />
-                      <Box>
-                        <Typography sx={{ fontWeight: 700, fontSize: '0.88rem', fontFamily: '"Lora",serif', color: '#FDF6EE', mb: 0.5 }}>
-                          {f.title}
+                    <Divider sx={{ my: 3 }} />
+
+                    {/* SECTION 8 — TERMS & CONDITIONS */}
+                    <Typography variant="h6" sx={{ color: '#FF6E21', mb: 2, fontFamily: '"Playfair Display",serif', fontWeight: 600 }}>
+                      8. Terms & Conditions
+                    </Typography>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, mb: 4 }}>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={termsAgree}
+                            onChange={e => setTermsAgree(e.target.checked)}
+                            sx={{ color: '#FF6E21', '&.Mui-checked': { color: '#FF6E21' } }}
+                          />
+                        }
+                        label={
+                          <Typography sx={{ fontFamily: '"Lora",serif', fontSize: '0.85rem', color: '#222222' }}>
+                            I agree to the <Box component="span" sx={{ color: '#FF6E21', fontWeight: 600, textDecoration: 'underline', cursor: 'pointer' }}>Terms and Conditions</Box>. *
+                          </Typography>
+                        }
+                      />
+                      {errors.termsAgree && (
+                        <Typography variant="caption" color="error" sx={{ mt: -1, ml: 4, fontFamily: '"Lora",serif' }}>
+                          {errors.termsAgree}
                         </Typography>
-                        <Typography sx={{ color: 'rgba(253,246,238,0.65)', fontSize: '0.78rem', fontFamily: '"Lora",serif', lineHeight: 1.5 }}>
-                          {f.desc}
+                      )}
+
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={privacyAgree}
+                            onChange={e => setPrivacyAgree(e.target.checked)}
+                            sx={{ color: '#FF6E21', '&.Mui-checked': { color: '#FF6E21' } }}
+                          />
+                        }
+                        label={
+                          <Typography sx={{ fontFamily: '"Lora",serif', fontSize: '0.85rem', color: '#222222' }}>
+                            I agree to the <Box component="span" sx={{ color: '#FF6E21', fontWeight: 600, textDecoration: 'underline', cursor: 'pointer' }}>Privacy Policy</Box>. *
+                          </Typography>
+                        }
+                      />
+                      {errors.privacyAgree && (
+                        <Typography variant="caption" color="error" sx={{ mt: -1, ml: 4, fontFamily: '"Lora",serif' }}>
+                          {errors.privacyAgree}
                         </Typography>
-                      </Box>
+                      )}
+
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={fundsAcknowledge}
+                            onChange={e => setFundsAcknowledge(e.target.checked)}
+                            sx={{ color: '#FF6E21', '&.Mui-checked': { color: '#FF6E21' } }}
+                          />
+                        }
+                        label={
+                          <Typography sx={{ fontFamily: '"Lora",serif', fontSize: '0.85rem', color: '#222222' }}>
+                            I understand that Care for Shepherds does not hold church funds and that all fundraising remains under my church&apos;s control. *
+                          </Typography>
+                        }
+                        sx={{ display: 'flex', alignItems: 'flex-start' }}
+                      />
+                      {errors.fundsAcknowledge && (
+                        <Typography variant="caption" color="error" sx={{ mt: -1, ml: 4, fontFamily: '"Lora",serif' }}>
+                          {errors.fundsAcknowledge}
+                        </Typography>
+                      )}
                     </Box>
-                  ))}
-                </Box>
 
-                <Divider sx={{ borderColor: 'rgba(253,246,238,0.15)', my: 3 }} />
+                    <Divider sx={{ my: 3 }} />
 
-                <Typography variant="body2" sx={{ textAlign: 'center', fontStyle: 'italic', color: 'rgba(253,246,238,0.5)', fontFamily: '"Lora",serif' }}>
-                  &ldquo;Helping churches care for the shepherds who care for them.&rdquo;
-                </Typography>
-              </CardContent>
-            </Card> */}
-          {/* </Grid> */}
+                    {/* SUBMIT SECTION */}
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        color="secondary"
+                        fullWidth
+                        size="large"
+                        disabled={loading || !authorized || !termsAgree || !privacyAgree || !fundsAcknowledge}
+                        endIcon={<ArrowForwardIcon />}
+                        sx={{ py: 1.5, fontSize: '1rem', fontWeight: 700 }}
+                      >
+                        {loading ? 'Registering Workspace...' : 'Create Church Account'}
+                      </Button>
 
-        </Grid>
+                      <Button
+                        component={Link}
+                        href="/auth/login"
+                        variant="outlined"
+                        fullWidth
+                        size="large"
+                        startIcon={<ArrowBackIcon />}
+                        sx={{ py: 1.5, fontSize: '0.9rem', color: '#2D2D2D', borderColor: 'rgba(255,110,33,0.3)', '&:hover': { borderColor: '#FF6E21', background: 'transparent' } }}
+                      >
+                        Back to Login
+                      </Button>
+
+                      <Typography variant="body2" sx={{ textAlign: 'center', color: '#2D2D2D', mt: 1, fontFamily: '"Lora",serif' }}>
+                        Already have an account?{' '}
+                        <Box component={Link} href="/auth/login" sx={{ color: '#FF6E21', fontWeight: 700, textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}>
+                          Login
+                        </Box>
+                      </Typography>
+                    </Box>
+
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
+
+          </Grid>
+        </Box>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 }

@@ -42,25 +42,25 @@ export default function HomeNavigation() {
         position="fixed"
         elevation={0}
         sx={{
-          backgroundColor: scrolled ? 'rgba(255,250,244,0.96)' : 'transparent',
+          backgroundColor: scrolled ? 'rgba(250,244,225,0.96)' : 'transparent',
           backdropFilter: scrolled ? 'blur(12px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(194,98,42,0.1)' : '1px solid transparent',
+          borderBottom: scrolled ? '1px solid rgba(255,110,33,0.1)' : '1px solid transparent',
           transition: 'all 0.3s ease',
-          boxShadow: scrolled ? '0 2px 20px rgba(44,26,14,0.06)' : 'none',
+          boxShadow: scrolled ? '0 2px 20px rgba(34,34,34,0.06)' : 'none',
         }}
       >
         <Container maxWidth="lg">
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', py: 2 }}>
             {/* Logo */}
             <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
-              <Box sx={{ width: 36, height: 36, borderRadius: '9px', background: '#C2622A', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <Typography sx={{ color: '#FDF6EE', fontFamily: '"Playfair Display",serif', fontWeight: 700, fontSize: '1.05rem' }}>S</Typography>
+              <Box sx={{ width: 36, height: 36, borderRadius: '9px', background: '#FF6E21', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <Typography sx={{ color: '#FAF4E1', fontFamily: '"Playfair Display",serif', fontWeight: 700, fontSize: '1.05rem' }}>S</Typography>
               </Box>
               <Box>
-                <Typography sx={{ color: scrolled ? '#2C1A0E' : '#FDF6EE', fontFamily: '"Playfair Display",serif', fontWeight: 700, fontSize: '1rem', lineHeight: 1.1, transition: 'color 0.3s', display: { xs: 'none', sm: 'block' } }}>
+                <Typography sx={{ color: scrolled ? '#222222' : '#FAF4E1', fontFamily: '"Playfair Display",serif', fontWeight: 700, fontSize: '1rem', lineHeight: 1.1, transition: 'color 0.3s', display: { xs: 'none', sm: 'block' } }}>
                   Care for Shepherds
                 </Typography>
-                <Typography sx={{ color: scrolled ? '#6B4C35' : 'rgba(253,246,238,0.45)', fontFamily: '"Lora",serif', fontSize: '0.58rem', letterSpacing: '0.1em', textTransform: 'uppercase', transition: 'color 0.3s', display: { xs: 'none', sm: 'block' } }}>
+                <Typography sx={{ color: scrolled ? '#2D2D2D' : 'rgba(250,244,225,0.45)', fontFamily: '"Lora",serif', fontSize: '0.58rem', letterSpacing: '0.1em', textTransform: 'uppercase', transition: 'color 0.3s', display: { xs: 'none', sm: 'block' } }}>
                   Pastoral Wellness Platform
                 </Typography>
               </Box>
@@ -72,10 +72,10 @@ export default function HomeNavigation() {
                 <Box key={link.href} component="a" href={link.href}
                   sx={{
                     px: 1.8, py: 0.8, textDecoration: 'none', borderRadius: 1.5,
-                    color: scrolled ? '#2C1A0E' : 'rgba(253,246,238,0.8)',
+                    color: scrolled ? '#222222' : 'rgba(250,244,225,0.8)',
                     fontFamily: '"Lora",serif', fontSize: '0.88rem', fontWeight: 500,
                     transition: 'all 0.2s', cursor: 'pointer',
-                    '&:hover': { color: '#C2622A', background: scrolled ? '#FAECE7' : 'rgba(194,98,42,0.15)' },
+                    '&:hover': { color: '#FF6E21', background: scrolled ? '#FAF4E1' : 'rgba(255,110,33,0.15)' },
                   }}>
                   {link.label}
                 </Box>
@@ -85,17 +85,17 @@ export default function HomeNavigation() {
             {/* Desktop actions */}
             <Stack direction="row" spacing={1.5} sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
               <Button component={Link} href="/auth/login"
-                sx={{ color: scrolled ? '#2C1A0E' : 'rgba(253,246,238,0.8)', fontFamily: '"Lora",serif', fontSize: '0.88rem', fontWeight: 600, px: 2, '&:hover': { color: '#C2622A', background: 'transparent' } }}>
+                sx={{ color: scrolled ? '#222222' : 'rgba(250,244,225,0.8)', fontFamily: '"Lora",serif', fontSize: '0.88rem', fontWeight: 600, px: 2, '&:hover': { color: '#FF6E21', background: 'transparent' } }}>
                 Login
               </Button>
               <Button component={Link} href="/auth/register" variant="contained" color="primary" endIcon={<ArrowForwardIcon sx={{ fontSize: 15 }} />}
-                sx={{ fontFamily: '"Lora",serif', fontSize: '0.85rem', fontWeight: 600, px: 2.5, py: 0.9, boxShadow: '0 2px 12px rgba(194,98,42,0.3)' }}>
+                sx={{ fontFamily: '"Lora",serif', fontSize: '0.85rem', fontWeight: 600, px: 2.5, py: 0.9, boxShadow: '0 2px 12px rgba(255,110,33,0.3)' }}>
                 Register Church
               </Button>
             </Stack>
 
             {/* Mobile hamburger */}
-            <IconButton onClick={() => setMobileOpen(true)} sx={{ display: { md: 'none' }, color: scrolled ? '#2C1A0E' : '#FDF6EE' }}>
+            <IconButton onClick={() => setMobileOpen(true)} sx={{ display: { md: 'none' }, color: scrolled ? '#222222' : '#FAF4E1' }}>
               <MenuIcon />
             </IconButton>
           </Box>
@@ -105,30 +105,30 @@ export default function HomeNavigation() {
 
       {/* Mobile drawer */}
       <Drawer anchor="right" open={mobileOpen} onClose={() => setMobileOpen(false)}
-        slotProps={{ paper: { sx: { width: 280, background: '#1A0A00' } } }}>
+        slotProps={{ paper: { sx: { width: 280, background: '#222222' } } }}>
         <Box sx={{ p: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography sx={{ color: '#FDF6EE', fontFamily: '"Playfair Display",serif', fontWeight: 700, fontSize: '1rem' }}>
+          <Typography sx={{ color: '#FAF4E1', fontFamily: '"Playfair Display",serif', fontWeight: 700, fontSize: '1rem' }}>
             Care for Shepherds
           </Typography>
-          <IconButton onClick={() => setMobileOpen(false)} sx={{ color: 'rgba(253,246,238,0.5)' }}>
+          <IconButton onClick={() => setMobileOpen(false)} sx={{ color: 'rgba(250,244,225,0.5)' }}>
             <CloseIcon />
           </IconButton>
         </Box>
-        <Divider sx={{ borderColor: 'rgba(253,246,238,0.08)' }} />
+        <Divider sx={{ borderColor: 'rgba(250,244,225,0.08)' }} />
         <List sx={{ px: 1, pt: 2 }}>
           {navLinks.map(link => (
             <ListItem key={link.href} disablePadding>
               <ListItemButton component="a" href={link.href} onClick={() => setMobileOpen(false)}
-                sx={{ borderRadius: 2, mb: 0.3, py: 1.2, '&:hover': { background: 'rgba(194,98,42,0.15)' } }}>
-                <Typography sx={{ color: 'rgba(253,246,238,0.75)', fontFamily: '"Lora",serif', fontSize: '0.92rem' }}>{link.label}</Typography>
+                sx={{ borderRadius: 2, mb: 0.3, py: 1.2, '&:hover': { background: 'rgba(255,110,33,0.15)' } }}>
+                <Typography sx={{ color: 'rgba(250,244,225,0.75)', fontFamily: '"Lora",serif', fontSize: '0.92rem' }}>{link.label}</Typography>
               </ListItemButton>
             </ListItem>
           ))}
         </List>
-        <Divider sx={{ borderColor: 'rgba(253,246,238,0.08)', my: 2 }} />
+        <Divider sx={{ borderColor: 'rgba(250,244,225,0.08)', my: 2 }} />
         <Box sx={{ px: 2, pb: 3 }}>
           <Button component={Link} href="/auth/login" fullWidth variant="outlined"
-            sx={{ mb: 1.5, color: 'rgba(253,246,238,0.8)', borderColor: 'rgba(253,246,238,0.25)', fontFamily: '"Lora",serif', '&:hover': { borderColor: '#C2622A', color: '#C2622A' } }}>
+            sx={{ mb: 1.5, color: 'rgba(250,244,225,0.8)', borderColor: 'rgba(250,244,225,0.25)', fontFamily: '"Lora",serif', '&:hover': { borderColor: '#FF6E21', color: '#FF6E21' } }}>
             Login
           </Button>
           <Button component={Link} href="/auth/register" fullWidth variant="contained" color="primary"
